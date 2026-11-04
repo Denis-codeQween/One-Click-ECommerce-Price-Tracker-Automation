@@ -56,3 +56,37 @@ price_tracker/
 ├── requirements.txt          # Project dependencies
 ├── run.bat                   # Quick launcher for Windows
 └── run.sh                    # Quick launcher for macOS / Linux
+```
+---
+
+## ⚙️ Installation & Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/ecommerce-price-tracker.git
+cd ecommerce-price-tracker
+```
+
+### 2. Configure Environment Variables
+Copy the template file `.env.example` and rename it to `.env`:
+```bash
+cp .env.example .env
+```
+Open the `.env` file and insert your personal Telegram bot credentials:
+```env
+TELEGRAM_TOKEN=your_telegram_bot_token_here
+TELEGRAM_CHAT_ID=your_chat_id_here
+```
+
+### 3. Run the Project
+- **For Windows:** Double-click `run.bat` (or execute it via command line). It will automatically install requirements and run the script in the background.
+- **For macOS / Linux:** Make the script executable once and run it:
+  ```bash
+  chmod +x run.sh
+  ./run.sh
+```
+
+---
+
+## 💡 Portfolio & Freelance Ready
+This project demonstrates end-to-end automation capabilities, data processing hygiene, and secure API handling — core competencies valued by clients looking for reliable e-commerce scrapers, localization, and internal workflow automation on Upwork.
