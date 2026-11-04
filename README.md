@@ -1,56 +1,58 @@
-# 1-Click E-Commerce Price Tracker (AliExpress Edition)
+# 🛒 E-Commerce Automated Price Tracker
 
-A robust, modular Python automation tool designed for real-time e-commerce price monitoring, automated historical change detection, Telegram alerts, and formatted Excel reporting.
+A robust, production-ready Python automation tool designed to scrape localized product catalogs, track price fluctuations over time, generate professionally styled Excel reports, and dispatch instant Telegram alerts in Russian.
+
+Built with clean architecture, cross-platform compatibility, and automated background execution capabilities — tailored for e-commerce monitoring and freelance portfolio presentation.
+
+---
+
+## 📸 Project Showcase
+
+| Telegram Alerts (RU) | Professional Excel Report | Console Execution |
+| :---: | :---: | :---: |
+| ![Telegram Alerts](assets/images/telegram_alert.png)[cite: 1] | ![Excel Report](assets/images/excel_report.png)[cite: 2] | ![Console Output](assets/images/console.png)[cite: 3] |
 
 ---
 
 ## 🚀 Key Features
 
-- **Automated Web Scraping**: Utilizes Selenium and BeautifulSoup to extract live catalog listings, product names, IDs, and prices (configured for KZT `₸`).
-- **Smart Historical Comparison**: Compares live snapshots against local CSV history (`utf-8-sig` with semicolon separation) to detect new arrivals, price drops, and price increases.
-- **Telegram Notifications**: Sends instant alerts for price fluctuations with automatic chunking for long lists and robust plain-text formatting to avoid entity parsing errors.
-- **Professional Reporting**: Automatically compiles structured data into clean, formatted Excel reports (`openpyxl`) with dynamic serial numbering (`№`).
+* **Advanced Web Scraping (`Selenium` + `BeautifulSoup`):** Reliable multi-page catalog extraction with automated minimized browser mode, anti-bot / captcha handling checkpoints, and duplicate filtering.
+* **Smart Data Analytics (`Pandas`):** Compares data snapshots to detect accurate price changes (`PRICE DROP`, `PRICE INCREASE`, `NEW PRODUCT`, `REMOVED`, `UNCHANGED`).
+* **Professional Excel Reporting (`openpyxl`):** Automatically generates styled reports featuring custom header fills, gridline visibility, thin borders, automatic column width adjustments, and conditional cell alignments.
+* **Localized Telegram Notifications (`Requests`):** Dispatches concise, formatted alerts in Russian for any price shifts with correct currency tracking and message-chunking to prevent API overflow[cite: 1].
+* **Cross-Platform & Automation Ready:** Out-of-the-box launchers for both **Windows (`run.bat`)** and **macOS/Linux (`run.sh`)** with automated dependency checks and silent background execution.
 
 ---
 
-## 🛠️ Project Architecture
+## 🛠️ Tech Stack
+
+* **Language:** Python 3.10+
+* **Data Processing:** pandas, numpy
+* **Web Scraping:** selenium, beautifulsoup4
+* **Reporting:** openpyxl
+* **API & Automation:** requests, Windows Task Scheduler / Cron
+
+---
+
+## 📁 Project Structure
 
 ```text
+price_tracker/
+│
+├── assets/
+│   └── images/               # Screenshots for documentation
 ├── data/
-│   ├── raw/                 # Historical snapshots (previous_snapshot.csv)
-│   └── reports/             # Generated Excel analytics reports
+│   ├── raw/                  # Persistent baseline state (.csv)
+│   └── reports/              # Generated styled Excel reports (.xlsx)
+│
 ├── src/
-│   ├── scraper.py           # Selenium catalog parser
-│   ├── reporter.py          # Excel generator (openpyxl)
-│   └── notifier.py          # Telegram bot integration module
-├── main.py                  # Main execution pipeline
-└── requirements.txt         # Project dependencies
-```
-
----
-
-## 📦 Installation & Setup
-
-1. **Clone or download** the repository to your local machine.
-2. **Install dependencies** using the requirements file:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. **Configure Telegram Credentials**:
-   Ensure your Bot Token and Chat ID are properly configured in `src/notifier.py`. Make sure you have started a chat with your bot by sending `/start` in Telegram.
-
----
-
-## 🏃‍♂️ Usage
-
-Run the complete monitoring pipeline with a single command:
-```bash
-python main.py
-```
-
-### What happens during execution:
-1. **Scraping**: The browser launches, pages are scrolled, and live product data is collected.
-2. **Analysis**: Current prices are compared against `data/raw/previous_snapshot.csv` strictly by product title/SKU.
-3. **Alerts**: If price changes are detected in existing items, clean text alerts are instantly dispatched to your Telegram chat.
-4. **Reporting**: A fresh Excel spreadsheet is compiled and saved under `data/reports/`.
-5. **History Update**: The historical snapshot is safely overwritten with the latest crawl data for the next run.
+│   ├── main.py               # Main orchestration script & console minimizer
+│   ├── scraper.py            # AliExpress scraper module
+│   ├── analyzer.py           # Price delta & snapshot comparison engine
+│   ├── reporter.py           # Excel styling & report generator
+│   └── notifier.py           # Telegram bot notification sender
+│
+├── .env.example              # Template for environment variables
+├── requirements.txt          # Project dependencies
+├── run.bat                   # Quick launcher for Windows
+└── run.sh                    # Quick launcher for macOS / Linux
