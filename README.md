@@ -63,8 +63,8 @@ price_tracker/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/ecommerce-price-tracker.git
-cd ecommerce-price-tracker
+git clone https://github.com/Denis-codeQween/One-Click-ECommerce-Price-Tracker-Automation.git
+cd One-Click-ECommerce-Price-Tracker-Automation
 ```
 
 ### 2. Configure Environment Variables
