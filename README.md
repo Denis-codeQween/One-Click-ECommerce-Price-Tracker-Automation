@@ -67,7 +67,12 @@ git clone https://github.com/Denis-codeQween/One-Click-ECommerce-Price-Tracker-A
 cd One-Click-ECommerce-Price-Tracker-Automation
 ```
 
-### 2. Configure Environment Variables
+### 2. Install Dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Configure Environment Variables
 Copy the template file `.env.example` and rename it to `.env`:
 ```bash
 cp .env.example .env
@@ -78,7 +83,7 @@ TELEGRAM_TOKEN=your_telegram_bot_token_here
 TELEGRAM_CHAT_ID=your_chat_id_here
 ```
 
-### 3. Run the Project
+### 4. Run the Project
 - **For Windows:** Double-click `run.bat` (or execute it via command line). It will automatically install requirements and run the script in the background.
 - **For macOS / Linux:** Make the script executable once and run it:
 ```bash
